@@ -1,20 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, SafeAreaView, Alert } from 'react-native';
+
 
 export default function App() {
+  const [value,setValue] = useState('Дарова')
+  const handleButtonPress = () => {
+    Alert.alert("itProger" , "you Pressed on button" , [
+      {
+        text : 'Да',
+        onPress : () => console.log('yes')
+       },
+      {
+      text : 'Отмена',
+      onPress : () => console.log('no')
+    
+      }
+    ])
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style ={styles.text}>{value}</Text>
+      <TextInput style={styles.input} placeholder='text input'/>
+      <Button onPress={handleButtonPress} color='red'  title='Нажми на меня'/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems : 'center',
+    justifyContent: 'center'
   },
+  text : {
+    color : 'red',
+  },
+
 });
